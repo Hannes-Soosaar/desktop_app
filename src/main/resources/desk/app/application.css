@@ -1,18 +1,19 @@
-.root{
-   -fx-background-color: #111111;
+.root {
+    -fx-background-color: #111111;
 }
-.label{
-    -fx-font-size:10;
+
+.label {
+    -fx-font-size: 10;
     -fx-font-family: "Lucida Console";
     -fx-text-fill: "white";
 }
 
 
-#title{
--fx-font-size:20 ;
+#title {
+    -fx-font-size: 5;
     -fx-alignment: center;
 }
 
-#style{
+#style {
     -fx-alignment: center;
 }
