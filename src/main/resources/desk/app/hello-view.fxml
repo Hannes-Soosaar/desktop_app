@@ -5,11 +5,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desk.app.HelloController">
+<AnchorPane fx:id="helloPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desk.app.HelloController">
    <children>
       <Circle fx:id="circle" fill="DODGERBLUE" layoutX="290.0" layoutY="200.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="37.0" layoutY="50.0" text="Hello page" />
+      <Label layoutX="211.0" layoutY="53.0" text="Hello App">
+         <font>
+            <Font size="36.0" />
+         </font></Label>
       <Button fx:id="login_button" layoutX="73.0" layoutY="396.0" mnemonicParsing="false" onAction="#login" text="Login" />
       <TextField fx:id="username_text_field" layoutX="136.0" layoutY="396.0" promptText="user name" />
       <Label fx:id="instructionLabel" layoutX="293.0" layoutY="400.0" text="your email address is your username" />
