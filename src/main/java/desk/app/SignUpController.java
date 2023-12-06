@@ -15,7 +15,6 @@ public class SignUpController {
     @FXML
     private TextField ageField;
     Integer age;
-
     public void registerAge(ActionEvent event) {
 
         try {

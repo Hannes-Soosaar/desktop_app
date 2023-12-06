@@ -7,10 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.ParallelCamera;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -25,6 +22,14 @@ public class Scene2Controller {
     private Button logoutButton;
     @FXML
     private Button signupButton;
+    @FXML
+    private RadioButton professionalRadioButton;
+    @FXML
+    private RadioButton enterpriseRadioButton;
+    @FXML
+    private RadioButton publicRadioButton;
+    @FXML
+    private Label selectionDisplayText, vesrsionSellectText;
     private Parent root;
     private Stage stage;
 
@@ -44,6 +49,20 @@ public class Scene2Controller {
 
     public void displayName(String userName) {
         nameLabel.setText("Hey:" + userName);
+    }
+
+    public void sellectVersion(ActionEvent event) {
+
+        if (professionalRadioButton.isSelected()) {
+            selectionDisplayText.setText("You have chosen the: professional version");
+        } else if (enterpriseRadioButton.isSelected()) {
+            selectionDisplayText.setText("You have chosen the: enterpirse version");
+        } else if (publicRadioButton.isSelected()) {
+            selectionDisplayText.setText("You have chosen the: public version");
+        } else {
+            selectionDisplayText.setText("You have chosen the: professional version");
+        }
+
     }
 
     @FXML

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-    private Parent root;
+    Parent root;
 
     @Override
     public void start(Stage stage) throws IOException {
