@@ -16,11 +16,11 @@
          </font></Label>
       <Button fx:id="login_button" layoutX="73.0" layoutY="396.0" mnemonicParsing="false" onAction="#login" text="Login" />
       <TextField fx:id="username_text_field" layoutX="136.0" layoutY="396.0" promptText="user name" />
-      <Label fx:id="instructionLabel" layoutX="293.0" layoutY="400.0" text="your email address is your username" />
       <Button fx:id="switchMoogle" layoutX="495.0" layoutY="225.0" mnemonicParsing="false" onAction="#displayMoogle" text="MoogleButton" />
-      <ImageView fx:id="moogleView" fitHeight="166.0" fitWidth="225.0" layoutX="205.0" layoutY="142.0"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@moogle22.png"/>
+      <ImageView fx:id="moogleView" fitHeight="166.0" fitWidth="225.0" layoutX="205.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@moogle22.png" />
+         </image>
       </ImageView>
    </children>
 </AnchorPane>
