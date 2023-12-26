@@ -39,7 +39,6 @@ public class SignUpController implements Initializable {
     private int temperature;
     private final String[] selectionOptions = {"option1", "option2", "option3"};
     Integer age;
-
     public void registerAge(ActionEvent event) {
 
         try {
@@ -66,7 +65,6 @@ public class SignUpController implements Initializable {
                     townSpinner.getValueFactory().setValue(townSelection[activeValue - 1]);
                 }
             }
-
             @Override
             public void increment(int i) {
                 int activeValue = getIndexOfTownSelected();
@@ -74,7 +72,6 @@ public class SignUpController implements Initializable {
                     townSpinner.getValueFactory().setValue(townSelection[activeValue + 1]);
                 }
             }
-
             private int getIndexOfTownSelected() {
                 String activeValue = getValue();
                 for (int i = 0; i < townSelection.length; i++) {
@@ -87,15 +84,11 @@ public class SignUpController implements Initializable {
             }
         };
 
-
         valueFactory.setValue(townSelection[0]);
         townSpinner.setValueFactory(valueFactory);
-
-
         tempStatusBar.setStyle("-fx-accent: #00FF00;");
         selectStatus.getItems().addAll(selectionOptions);
         selectStatus.setOnAction(this::getOption);
-
         temperature = (int) tempVerticalSlider.getValue();
         tempLabel.setText(temperature + "C");
         tempVerticalSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -108,15 +101,10 @@ public class SignUpController implements Initializable {
                 tempLabel.setText(temperature + "C");
             }
         });
-
-
     }
-
-
     public void getOption(ActionEvent event) {
         String selectedOption = selectStatus.getValue();
         statusLabel.setText(selectedOption);
 
     }
-
 }
