@@ -30,6 +30,11 @@ public class SignUpController implements Initializable {
     private ProgressBar tempStatusBar;
     @FXML
     private Label tempStatus;
+    @FXML
+    private Label spinnerLabel;
+    @FXML
+    private Spinner<String> townSpinner;
+    private String[] townSelection = {"Tallinn", "Tartu", "Viljandi", "Parnu"};
     private BigDecimal boilingProgress;
     private int temperature;
     private final String[] selectionOptions = {"option1", "option2", "option3"};
@@ -56,10 +61,40 @@ public class SignUpController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory<String>() {
+            @Override
+            public void decrement(int i) {
+                int activeValue = getIndexOfTownSelected();
+                if (activeValue > 0){
+                    townSpinner.getValueFactory().setValue(townSelection[activeValue-1]);
+                }
+            }
+            @Override
+            public void increment(int i) {
+                int activeValue = getIndexOfTownSelected();
+                if (activeValue < townSelection.length-1){
+                    townSpinner.getValueFactory().setValue(townSelection[activeValue+1]);
+                }
+            }
+            private int getIndexOfTownSelected() {
+                String activeValue = getValue();
+                for (int i = 0; i < townSelection.length; i++) {
+                    if (townSelection[i].equals(activeValue)) {
+                        spinnerLabel.setText(townSelection[i]);
+                        return i;
+                    }
+                }
+                return -1;
+            }
+        };
+
+
+        valueFactory.setValue(townSelection[0]);
+        townSpinner.setValueFactory(valueFactory);
+
+
         tempStatusBar.setStyle("-fx-accent: #00FF00;");
-
-
-                selectStatus.getItems().addAll(selectionOptions);
+        selectStatus.getItems().addAll(selectionOptions);
         selectStatus.setOnAction(this::getOption);
 
         temperature = (int) tempVerticalSlider.getValue();
@@ -68,13 +103,18 @@ public class SignUpController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 temperature = (int) tempVerticalSlider.getValue();
-                boilingProgress = new BigDecimal(String.format("%.2f",(double)temperature));
+                boilingProgress = new BigDecimal(String.format("%.2f", (double) temperature));
                 tempStatus.setText(boilingProgress.toString());
-                tempStatusBar.setProgress((boilingProgress.doubleValue())/100);
+                tempStatusBar.setProgress((boilingProgress.doubleValue()) / 100);
                 tempLabel.setText(temperature + "C");
             }
         });
+
+
+
     }
+
+
 
     public void getOption(ActionEvent event) {
         String selectedOption = selectStatus.getValue();
