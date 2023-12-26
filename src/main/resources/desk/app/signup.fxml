@@ -3,12 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desk.app.SignUpController">
+<AnchorPane prefHeight="400.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desk.app.SignUpController">
    <children>
       <Button fx:id="addAgeButton" layoutX="368.0" layoutY="188.0" mnemonicParsing="false" onAction="#registerAge" text="add age" />
       <Label fx:id="signUpLabel" layoutX="189.0" layoutY="41.0" text="add you age to signe up">
@@ -23,10 +24,16 @@
             <Font size="35.0" />
          </font>
       </Label>
-      <Slider fx:id="tempVerticalSlider" blockIncrement="1.0" layoutX="40.0" layoutY="25.0" minorTickCount="10" orientation="VERTICAL" prefHeight="327.0" prefWidth="14.0" value="1.0" />
-      <Label fx:id="tempLabel" layoutX="7.0" layoutY="361.0" text="Temperature">
+      <Slider fx:id="tempVerticalSlider"  layoutX="41.0" layoutY="25.0" minorTickCount="10" orientation="VERTICAL" prefHeight="327.0" prefWidth="14.0"  />
+      <Label fx:id="tempLabel" alignment="CENTER" layoutX="13.0" layoutY="352.0" prefHeight="32.0" prefWidth="69.0" text="... C">
          <font>
             <Font size="22.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="tempStatusBar" layoutX="112.0" layoutY="106.0" prefHeight="32.0" prefWidth="330.0" progress="0.5" />
+      <Label fx:id="tempStatus" layoutX="451.0" layoutY="107.0" text="boiling satus" textFill="#200bda">
+         <font>
+            <Font size="20.0" />
          </font>
       </Label>
    </children>
