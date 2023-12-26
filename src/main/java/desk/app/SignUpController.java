@@ -50,32 +50,31 @@ public class SignUpController implements Initializable {
             } else {
                 signUpLabel.setText("You must be 18 or older");
             }
-
         } catch (NumberFormatException e) {
             signUpLabel.setText("Enter only Numbers");
         } catch (Exception e) {
             signUpLabel.setText(String.valueOf(e));
         }
-
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SpinnerValueFactory<String> valueFactory = new SpinnerValueFactory<String>() {
             @Override
             public void decrement(int i) {
                 int activeValue = getIndexOfTownSelected();
-                if (activeValue > 0){
-                    townSpinner.getValueFactory().setValue(townSelection[activeValue-1]);
+                if (activeValue > 0) {
+                    townSpinner.getValueFactory().setValue(townSelection[activeValue - 1]);
                 }
             }
+
             @Override
             public void increment(int i) {
                 int activeValue = getIndexOfTownSelected();
-                if (activeValue < townSelection.length-1){
-                    townSpinner.getValueFactory().setValue(townSelection[activeValue+1]);
+                if (activeValue < townSelection.length - 1) {
+                    townSpinner.getValueFactory().setValue(townSelection[activeValue + 1]);
                 }
             }
+
             private int getIndexOfTownSelected() {
                 String activeValue = getValue();
                 for (int i = 0; i < townSelection.length; i++) {
@@ -111,9 +110,7 @@ public class SignUpController implements Initializable {
         });
 
 
-
     }
-
 
 
     public void getOption(ActionEvent event) {
