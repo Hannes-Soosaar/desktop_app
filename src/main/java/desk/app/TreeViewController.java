@@ -42,7 +42,6 @@ public class TreeViewController implements Initializable {
         TreeItem<String> level1 = new TreeItem<String>("level1");
         TreeItem<String> level2 = new TreeItem<String>("level2");
         TreeItem<String> level3 = new TreeItem<String>("level3");
-        TreeItem<String> level4 = new TreeItem<String>("level4");
         TreeItem<String> level1room1 = new TreeItem<String>("level1room1");
         TreeItem<String> level1room2 = new TreeItem<String>("level1room2");
         TreeItem<String> level1room3 = new TreeItem<String>("level1room3");
