@@ -40,6 +40,8 @@ public class HelloController {
     private ColorPicker backGroundColorPicker;
     @FXML
     private Pane helloPane;
+    @FXML
+    private Button button_option_list;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -72,14 +74,23 @@ public class HelloController {
         stage.show();
     }
 
+    public void openOptionList(ActionEvent event) throws IOException {
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("option-list.fxml"));
+    root = fxmlLoader.load();
+    stage =(Stage) ((Node)event.getSource()).getScene().getWindow();
+    scene=new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    }
+
+
+
     public void getDate(ActionEvent event){
         LocalDate selectedDate = dateSelect.getValue();
         String dateDdMMYYYYFormat =dateSelect.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println(selectedDate);
         dateLabel.setText(dateDdMMYYYYFormat);
     }
-
-
     public void setBackgroundColor(ActionEvent event){
         Color sellectedBackGroundColor = backGroundColorPicker.getValue();
         helloPane.setBackground(new Background(new BackgroundFill(sellectedBackGroundColor,null,null)));
