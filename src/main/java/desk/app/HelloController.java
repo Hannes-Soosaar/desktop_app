@@ -42,10 +42,12 @@ public class HelloController {
     private Pane helloPane;
     @FXML
     private Button button_option_list;
+    @FXML
+    private Button buttonTreeView;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
-
 
     @FXML
     private TextField username_text_field;
@@ -54,10 +56,10 @@ public class HelloController {
         moogleView.setImage(moogleImage);
     }
 
-    public void toggleImage(ActionEvent event){
-        if (showImageCheckBox.isSelected()){
+    public void toggleImage(ActionEvent event) {
+        if (showImageCheckBox.isSelected()) {
             moogleView.setImage(moogleImage2);
-        }else{
+        } else {
             moogleView.setImage(moogleImage);
         }
     }
@@ -75,25 +77,32 @@ public class HelloController {
     }
 
     public void openOptionList(ActionEvent event) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("option-list.fxml"));
-    root = fxmlLoader.load();
-    stage =(Stage) ((Node)event.getSource()).getScene().getWindow();
-    scene=new Scene(root);
-    stage.setScene(scene);
-    stage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("option-list.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
-
-
-    public void getDate(ActionEvent event){
+    public void getDate(ActionEvent event) {
         LocalDate selectedDate = dateSelect.getValue();
-        String dateDdMMYYYYFormat =dateSelect.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        String dateDdMMYYYYFormat = dateSelect.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println(selectedDate);
         dateLabel.setText(dateDdMMYYYYFormat);
     }
-    public void setBackgroundColor(ActionEvent event){
+
+    public void setBackgroundColor(ActionEvent event) {
         Color sellectedBackGroundColor = backGroundColorPicker.getValue();
-        helloPane.setBackground(new Background(new BackgroundFill(sellectedBackGroundColor,null,null)));
+        helloPane.setBackground(new Background(new BackgroundFill(sellectedBackGroundColor, null, null)));
     }
 
+    public void openTreeView(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tree-view.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

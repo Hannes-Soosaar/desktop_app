@@ -29,14 +29,14 @@ public class OptionListController implements Initializable {
     private ListView<String> tableViewOptions;
     @FXML
     private Label selectedOptionDisplay;
-
     private String selectedOption;
-    private final String[] optionsList ={"option 1", "option 2", "option 3"};
+    private final String[] optionsList = {"option 1", "option 2", "option 3"};
+
     @FXML
     protected void returnToHello(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
-        root  = fxmlLoader.load();
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -44,14 +44,13 @@ public class OptionListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       this.tableViewOptions.getItems().addAll(optionsList);
+        this.tableViewOptions.getItems().addAll(optionsList);
         tableViewOptions.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                selectedOption= tableViewOptions.getSelectionModel().getSelectedItem();
+                selectedOption = tableViewOptions.getSelectionModel().getSelectedItem();
                 selectedOptionDisplay.setText(selectedOption);
             }
         });
-
     }
 }

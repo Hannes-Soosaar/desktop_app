@@ -20,6 +20,7 @@
          </font></Label>
       <Button fx:id="login_button" layoutX="73.0" layoutY="396.0" mnemonicParsing="false" onAction="#login" text="Login" />
       <Button fx:id="button_option_list" layoutX="93.0" layoutY="496.0" mnemonicParsing="false" onAction="#openOptionList" text="Option List" />
+      <Button fx:id="buttonTreeView" layoutX="93.0" layoutY="550.0" mnemonicParsing="false" onAction="#openTreeView" text="Open Tree view" />
       <TextField fx:id="username_text_field" layoutX="136.0" layoutY="396.0" promptText="user name" />
       <Button fx:id="switchMoogle" layoutX="495.0" layoutY="225.0" mnemonicParsing="false" onAction="#displayMoogle" text="switch Moogle" />
       <ImageView fx:id="moogleView" fitHeight="166.0" fitWidth="225.0" layoutX="205.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" smooth="false">
