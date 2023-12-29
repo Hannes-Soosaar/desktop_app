@@ -1,6 +1,7 @@
 package desk.app;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
@@ -44,8 +46,12 @@ public class HelloController {
     private Button button_option_list;
     @FXML
     private Button buttonTreeView;
+    @FXML
+    private MenuItem menuFileRockit;
 
-    private Stage stage;
+    protected KeyboardController keyboardController = new KeyboardController();
+
+    private Stage stage = new Stage();
     private Scene scene;
     private Parent root;
 
@@ -84,6 +90,38 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
     }
+    public void startRockitGame(ActionEvent event) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("animation.fxml"));
+        root = fxmlLoader.load();
+        MenuItem menuItem = (MenuItem) event.getSource();
+        Scene menuItemScene = menuItem.getParentPopup().getScene();
+        Stage stage = (Stage) menuItemScene.getWindow();
+        scene = new Scene(root);
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                                  @Override
+                                  public void handle(KeyEvent keyEvent) {
+
+                                      switch (keyEvent.getCode()) {
+
+                                          case W -> keyboardController.moveUp();
+
+                                          case A -> keyboardController.moveLeft();
+
+                                          case S -> keyboardController.moveDown();
+
+                                          case D -> keyboardController.moveRight();
+
+                                          default -> System.out.println("not a valid key");
+
+                                      }
+                                      System.out.println(keyEvent.getCode());
+                                  }
+                              }
+        );
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public void getDate(ActionEvent event) {
         LocalDate selectedDate = dateSelect.getValue();
@@ -104,5 +142,14 @@ public class HelloController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    @FXML
+    public void creatNewFile(){
+        System.out.println("New file created text printed to console!");
+    }
+
+    @FXML
+    public void closeApplication(ActionEvent event) {
+        System.out.println("You should closed the application");
     }
 }

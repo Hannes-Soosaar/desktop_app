@@ -5,40 +5,65 @@
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="helloPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desk.app.HelloController">
+<AnchorPane fx:id="helloPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desk.app.HelloController">
    <children>
-      <Label layoutX="211.0" layoutY="53.0" text="Hello App">
+      <Label layoutX="132.0" layoutY="51.0" text="Hello App">
          <font>
             <Font size="36.0" />
          </font></Label>
-      <Button fx:id="login_button" layoutX="73.0" layoutY="396.0" mnemonicParsing="false" onAction="#login" text="Login" />
-      <Button fx:id="button_option_list" layoutX="93.0" layoutY="496.0" mnemonicParsing="false" onAction="#openOptionList" text="Option List" />
-      <Button fx:id="buttonTreeView" layoutX="93.0" layoutY="550.0" mnemonicParsing="false" onAction="#openTreeView" text="Open Tree view" />
-      <TextField fx:id="username_text_field" layoutX="136.0" layoutY="396.0" promptText="user name" />
-      <Button fx:id="switchMoogle" layoutX="495.0" layoutY="225.0" mnemonicParsing="false" onAction="#displayMoogle" text="switch Moogle" />
-      <ImageView fx:id="moogleView" fitHeight="166.0" fitWidth="225.0" layoutX="205.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+      <Button fx:id="login_button" layoutX="372.0" layoutY="315.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Button fx:id="button_option_list" layoutX="212.0" layoutY="159.0" mnemonicParsing="false" onAction="#openOptionList" text="Option List" />
+      <Button fx:id="buttonTreeView" layoutX="211.0" layoutY="128.0" mnemonicParsing="false" onAction="#openTreeView" text="Open Tree view" />
+      <TextField fx:id="username_text_field" layoutX="212.0" layoutY="315.0" promptText="user name" />
+      <Button fx:id="switchMoogle" layoutX="59.0" layoutY="295.0" mnemonicParsing="false" onAction="#displayMoogle" text="switch Moogle" />
+      <ImageView fx:id="moogleView" fitHeight="166.0" fitWidth="225.0" layoutX="26.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@moogle22.png" />
          </image>
       </ImageView>
-      <CheckBox fx:id="showImageCheckBox" layoutX="228.0" layoutY="322.0" mnemonicParsing="false" onAction="#toggleImage" text="Show Image">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </CheckBox>
-      <DatePicker fx:id="dateSelect" layoutX="328.0" layoutY="396.0" onAction="#getDate" promptText="sellect a date" />
-      <Label fx:id="dateLabel" layoutX="401.0" layoutY="436.0" text="Sellected date" />
-      <ColorPicker fx:id="backGroundColorPicker" layoutX="461.0" layoutY="28.0" onAction="#setBackgroundColor">
+      <CheckBox fx:id="showImageCheckBox" layoutX="62.0" layoutY="327.0" mnemonicParsing="false" onAction="#toggleImage" text="Show Image" />
+      <DatePicker fx:id="dateSelect" layoutX="211.0" layoutY="261.0" onAction="#getDate" promptText="sellect a date" />
+      <Label fx:id="dateLabel" layoutX="212.0" layoutY="290.0" text="Sellected date" />
+      <ColorPicker fx:id="backGroundColorPicker" layoutX="212.0" layoutY="203.0" onAction="#setBackgroundColor">
          <value>
             <Color red="0.8947368264198303" green="0.7331871390342712" blue="0.7331871390342712" />
          </value>
       </ColorPicker>
+      <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="438.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="menuFileRockit" mnemonicParsing="false" onAction="#startRockitGame" text="Fly a rockit">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="N" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="menuFileClose" mnemonicParsing="false" onAction="#closeApplication" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="menuEditNothing" mnemonicParsing="false" text="Nothing to Edit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="menuHelpNoHelp" mnemonicParsing="false" text="No help" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

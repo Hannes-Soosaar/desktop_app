@@ -2,6 +2,7 @@ package desk.app;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +23,28 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
+        KeyboardController keyboardController = new KeyboardController();
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                                  @Override
+                                  public void handle(KeyEvent keyEvent) {
+
+                                      switch (keyEvent.getCode()) {
+
+                                          case W -> keyboardController.moveUp();
+
+                                          case A -> keyboardController.moveLeft();
+
+                                          case S -> keyboardController.moveDown();
+
+                                          case D -> keyboardController.moveRight();
+
+                                          default -> System.out.println("not a valid key");
+
+                                      }
+                                      System.out.println(keyEvent.getCode());
+                                  }
+                              }
+        );
         String css = this.getClass().getResource("application.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setTitle("Hello!");
