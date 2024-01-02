@@ -2,19 +2,25 @@ package desk.app;
 
 public class KeyboardController {
 
-    public void  moveUp(){
+    // takes in current pos and returns modified coordinates
+    public double  moveUp( double X){
         System.out.println("Moving Up");
+    return X+10;
     }
-    public void  moveDown(){
+    public double  moveDown(double X)
+    {
         System.out.println("Moving Down");
+        return X-10;
     }
-    public void  moveLeft(){
+    public double  moveLeft( double Y)
+    {
         System.out.println("Moving Left");
+        return Y-10;
     }
-    public void  moveRight(){
+    public double  moveRight(double Y){
+
         System.out.println("Moving Right");
+        return Y+10;
     }
-
-
 
 }

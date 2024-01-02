@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -24,19 +25,20 @@ public class HelloApplication extends Application {
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         KeyboardController keyboardController = new KeyboardController();
+/*
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
                                   @Override
                                   public void handle(KeyEvent keyEvent) {
 
                                       switch (keyEvent.getCode()) {
 
-                                          case W -> keyboardController.moveUp();
+                                          case W -> keyboardController.moveUp(0);
 
-                                          case A -> keyboardController.moveLeft();
+                                          case A -> keyboardController.moveLeft(0);
 
-                                          case S -> keyboardController.moveDown();
+                                          case S -> keyboardController.moveDown(0);
 
-                                          case D -> keyboardController.moveRight();
+                                          case D -> keyboardController.moveRight(0);
 
                                           default -> System.out.println("not a valid key");
 
@@ -44,7 +46,8 @@ public class HelloApplication extends Application {
                                       System.out.println(keyEvent.getCode());
                                   }
                               }
-        );
+*/
+//        );
         String css = this.getClass().getResource("application.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setTitle("Hello!");

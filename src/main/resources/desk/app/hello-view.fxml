@@ -45,7 +45,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="menuFileRockit" mnemonicParsing="false" onAction="#startRockitGame" text="Fly a rockit">
+                  <MenuItem fx:id="menuFileRocket" mnemonicParsing="false" onAction="#startRocketGame" text="Fly a rockit">
                      <accelerator>
                         <KeyCodeCombination alt="DOWN" code="N" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>

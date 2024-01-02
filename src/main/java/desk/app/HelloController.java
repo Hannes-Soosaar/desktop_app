@@ -32,6 +32,7 @@ public class HelloController {
     private CheckBox showImageCheckBox;
     Image moogleImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("moogle11.png")));
     Image moogleImage2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("moogle22.png")));
+
     @FXML
     public Button login_button;
     @FXML
@@ -47,7 +48,7 @@ public class HelloController {
     @FXML
     private Button buttonTreeView;
     @FXML
-    private MenuItem menuFileRockit;
+    private MenuItem menuFileRocket;
 
     protected KeyboardController keyboardController = new KeyboardController();
 
@@ -90,38 +91,13 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
     }
-    public void startRockitGame(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("animation.fxml"));
-        root = fxmlLoader.load();
-        MenuItem menuItem = (MenuItem) event.getSource();
-        Scene menuItemScene = menuItem.getParentPopup().getScene();
-        Stage stage = (Stage) menuItemScene.getWindow();
-        scene = new Scene(root);
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                                  @Override
-                                  public void handle(KeyEvent keyEvent) {
+    public void startRocketGame(ActionEvent event) throws IOException {
 
-                                      switch (keyEvent.getCode()) {
+            AnimationController animationController = new AnimationController();
+            animationController.startMiniGame();
 
-                                          case W -> keyboardController.moveUp();
-
-                                          case A -> keyboardController.moveLeft();
-
-                                          case S -> keyboardController.moveDown();
-
-                                          case D -> keyboardController.moveRight();
-
-                                          default -> System.out.println("not a valid key");
-
-                                      }
-                                      System.out.println(keyEvent.getCode());
-                                  }
-                              }
-        );
-        stage.setScene(scene);
-        stage.show();
-    }
+        }
 
     public void getDate(ActionEvent event) {
         LocalDate selectedDate = dateSelect.getValue();
@@ -143,8 +119,9 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
-    public void creatNewFile(){
+    public void creatNewFile() {
         System.out.println("New file created text printed to console!");
     }
 
