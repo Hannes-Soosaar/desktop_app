@@ -1,27 +1,24 @@
 package desk.app;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.Window;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static javafx.scene.input.KeyCode.W;
-
-public class AnimationController implements Initializable {
+public class AnimationController  {
 
     @FXML
     private ImageView rocketImage;
@@ -29,7 +26,6 @@ public class AnimationController implements Initializable {
     Parent root;
     Stage stage;
     Scene scene;
-
 
     public void backToHello(ActionEvent event) throws IOException {
         try {
@@ -44,15 +40,41 @@ public class AnimationController implements Initializable {
         stage.show();
     }
 
-    public void moveRocket() {
-        System.out.println("moveRocket()");
-    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
+    public void crazyMove(ImageView rocketImage) {
+        TranslateTransition transitionRight = new TranslateTransition();
+        System.out.println("running crazy move");
+        this.rocketImage = rocketImage;
+        transitionRight.setNode(this.rocketImage);
+        transitionRight.setDuration(Duration.millis(1000));
+        transitionRight.setByX(250);
+        transitionRight.setByY(150);
+        transitionRight.setCycleCount(2);
+        transitionRight.setAutoReverse(true);
+        transitionRight.play();
 
-    public void startMiniGame(){
+        RotateTransition rotateTransition = new RotateTransition();
+        rotateTransition.setNode(this.rocketImage);
+        rotateTransition.setDuration(Duration.millis(2000));
+        rotateTransition.setCycleCount(1);
+        rotateTransition.setByAngle(360);
+        rotateTransition.play();
+
+        FadeTransition fade = new FadeTransition();
+        fade.setNode(this.rocketImage);
+        fade.setDuration(Duration.millis(1000));
+        fade.setCycleCount(2);
+        fade.setFromValue(1);
+        fade.setToValue(0.1);
+        fade.setAutoReverse(true);
+        fade.play();
+    }
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//    }
+
+
+    public void startMiniGame() {
         KeyboardController keyboardController = new KeyboardController();
         Stage newStage = new Stage();
         Parent newRoot = null;
@@ -60,42 +82,52 @@ public class AnimationController implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("animation.fxml"));
             newRoot = fxmlLoader.load();
-            AnimationController controller =fxmlLoader.getController();
+            AnimationController controller = fxmlLoader.getController();
 
-        if (newRoot != null) {
-            Scene newScene = new Scene(newRoot);
-            newScene.setOnKeyPressed(keyEvent ->  {
+            if (newRoot != null) {
+                Scene newScene = new Scene(newRoot);
+                newScene.setOnKeyPressed(keyEvent -> {
 
-                                             switch (keyEvent.getCode()) {
+                            switch (keyEvent.getCode()) {
 
-                                                 case W -> {
-                                                     controller.rocketImage.setY(controller.rocketImage.getY()-50);
-                                                     System.out.println(controller.rocketImage.getY());
-                                                 }
+                                case W -> {
+                                    controller.rocketImage.setY(controller.rocketImage.getY() - 50);
+                                    System.out.println(controller.rocketImage.getY());
+                                }
 
-                                                 case A -> {
-                                                     controller.rocketImage.setX(controller.rocketImage.getX()-50);
-                                                     System.out.println(controller.rocketImage.getX());
-                                                 }
+                                case A -> {
+                                    controller.rocketImage.setX(controller.rocketImage.getX() - 50);
+                                    System.out.println(controller.rocketImage.getX());
+                                }
 
-                                                 case S -> {
-                                                     controller.rocketImage.setY(controller.rocketImage.getY()+50);
-                                                     System.out.println(controller.rocketImage.getX());
-                                                 }
-                                                 case D -> {
-                                                     controller.rocketImage.setX(controller.rocketImage.getX()+50);
-                                                     System.out.println(controller.rocketImage.getX());
-                                                 }
-                                                 default -> System.out.println("not a valid key");
+                                case S -> {
+                                    controller.rocketImage.setY(controller.rocketImage.getY() + 50);
+                                    System.out.println(controller.rocketImage.getX());
+                                }
+                                case D -> {
+                                    controller.rocketImage.setX(controller.rocketImage.getX() + 50);
+                                    System.out.println(controller.rocketImage.getX());
+                                }
+                                case E -> {
+                                    controller.rocketImage.setRotate(controller.rocketImage.getRotate() + 90);
+                                    System.out.println(controller.rocketImage.getX());
+                                }
+                                case Q -> {
+                                    controller.rocketImage.setRotate(controller.rocketImage.getRotate() - 90);
+                                    System.out.println(controller.rocketImage.getX());
+                                }
+                                case C -> {
+                                    crazyMove(controller.rocketImage);
+                                }
+                                default -> System.out.println("not a valid key");
 
-                                             }
-
-                                     }
-            );
-            newStage.setScene(newScene);
-            newStage.setTitle("Running In AnimationController");
-            newStage.show();
-        }
+                            }
+                        }
+                );
+                newStage.setScene(newScene);
+                newStage.setTitle("Rocket Game");
+                newStage.show();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

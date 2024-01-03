@@ -25,29 +25,7 @@ public class HelloApplication extends Application {
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         KeyboardController keyboardController = new KeyboardController();
-/*
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                                  @Override
-                                  public void handle(KeyEvent keyEvent) {
 
-                                      switch (keyEvent.getCode()) {
-
-                                          case W -> keyboardController.moveUp(0);
-
-                                          case A -> keyboardController.moveLeft(0);
-
-                                          case S -> keyboardController.moveDown(0);
-
-                                          case D -> keyboardController.moveRight(0);
-
-                                          default -> System.out.println("not a valid key");
-
-                                      }
-                                      System.out.println(keyEvent.getCode());
-                                  }
-                              }
-*/
-//        );
         String css = this.getClass().getResource("application.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setTitle("Hello!");
