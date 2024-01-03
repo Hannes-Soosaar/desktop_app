@@ -2,6 +2,7 @@ package desk.app;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,11 +69,19 @@ public class AnimationController  {
         fade.setToValue(0.1);
         fade.setAutoReverse(true);
         fade.play();
-    }
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//    }
 
+        ScaleTransition scale =new ScaleTransition();
+        scale.setNode(this.rocketImage);
+        scale.setDuration(Duration.millis(200));
+        scale.setCycleCount(10);
+        scale.setFromX(1);
+        scale.setFromY(1);
+        scale.setToX(0.1);
+        scale.setToY(0.1);
+        scale.setAutoReverse(true);
+        scale.play();
+
+    }
 
     public void startMiniGame() {
         KeyboardController keyboardController = new KeyboardController();
