@@ -41,7 +41,7 @@
             <Color red="0.8947368264198303" green="0.7331871390342712" blue="0.7331871390342712" />
          </value>
       </ColorPicker>
-      <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="438.0">
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="438.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -65,5 +65,6 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Button fx:id="playIntroButton" layoutX="320.0" layoutY="128.0" mnemonicParsing="false" onAction="#openMediaPlayer" prefHeight="25.0" prefWidth="99.0" text="Play Intro" />
    </children>
 </AnchorPane>

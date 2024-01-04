@@ -96,7 +96,11 @@ public class HelloController {
 
             AnimationController animationController = new AnimationController();
             animationController.startMiniGame();
+        }
 
+        public void openMediaPlayer(){
+        MediaPlayerController mediaPlayerController =new MediaPlayerController();
+        mediaPlayerController.startMediaPlayer();
         }
 
     public void getDate(ActionEvent event) {
