@@ -103,6 +103,12 @@ public class HelloController {
         mediaPlayerController.startMediaPlayer();
         }
 
+        public void openWeb(){
+        BrowserController browserController =new BrowserController();
+        browserController.startBrowser();
+
+        }
+
     public void getDate(ActionEvent event) {
         LocalDate selectedDate = dateSelect.getValue();
         String dateDdMMYYYYFormat = dateSelect.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
